@@ -45,7 +45,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed 0.3
         // accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -135,7 +135,10 @@ layout {
     }
 
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
-    // preset-window-heights { }
+    preset-window-heights {
+        proportion 0.5
+        proportion 1.0
+    }
 
     // You can change the default width of the new windows.
     default-column-width { proportion 0.5; }
@@ -266,7 +269,7 @@ layout {
         opacity 0.8
 //       match app-id="com.mitchellh.ghostty"
 //        match app-id="^(com.mitchellh.ghostty|code)$"
-        match app-id="^(com.mitchellh.ghostty|code|org.kde.dolphin)$"
+        match app-id="^(com.mitchellh.ghostty|code)$"
 //       match app-id="^(com.mitchellh.ghostty|code|org.kde.dolphin|spotify|Spotify)$" 
     }
     window-rule {
@@ -280,6 +283,10 @@ layout {
     window-rule {
         opacity 0.80
         match app-id="Slack"
+    }
+    window-rule {
+        opacity 0.95
+        match app-id="org.gnome.Nautilus"
     }
     layer-rule {
         match namespace="^noctalia-overview*"
@@ -392,13 +399,15 @@ binds {
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+E hotkey-overlay-title="Run an Application: vscode" { spawn "code"; }
     Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox";}
-    Super+F hotkey-overlay-title="Run an Application: dolphin" { spawn "dolphin";}
+    Super+F hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus";}
     Mod+Shift+A hotkey-overlay-title="Run an Application: kde-discover" { spawn "kde-discover";}
     Super+S hotkey-overlay-title="Run an Application: slack" {spawn "slack";}
+    Super+G hotkey-overlay-title="Run an Application: github-desktop" {spawn "github-desktop";}
+    Super+M hotkey-overlay-title="Run an Application: spotify" {spawn "spotify";}
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
