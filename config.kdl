@@ -244,31 +244,30 @@ layout {
     struts 
 }
     window-rule {
-        opacity 0.8
-//       match app-id="com.mitchellh.ghostty"
-//        match app-id="^(com.mitchellh.ghostty|code)$"
-        match app-id="^(com.mitchellh.ghostty|code)$"
-//       match app-id="^(code|org.kde.dolphin|spotify|Spotify)$" 
-}
-    window-rule {
-        opacity 0.95
-        match app-id="spotify"
-}
-    window-rule {
-        opacity 0.85
+        opacity 0.75
         match app-id="com.mitchellh.ghostty"
+        draw-border-with-background false
+//        match app-id="^(com.mitchellh.ghostty|code)$"
+//        match app-id="^(com.mitchellh.ghostty|code)$"
+//       match app-id="^(code|org.kde.dolphin|spotify|Spotify)$" 
+    background-effect {
+        blur true
+    }
+
+}
+    window-rule {
+        opacity 0.75
+        match app-id="code"
+    background-effect {
+        blur true
+    }
     }
     window-rule {
-        opacity 0.95
-        match app-id="firefox"
-}
-    window-rule {
-        opacity 0.95
-        match app-id="Slack"
-}
-    window-rule {
-        opacity 0.95
+        opacity 0.75
         match app-id="org.gnome.Nautilus"
+    background-effect {
+        blur true
+    }
 }
     window-rule {
         match app-id="Godot"
@@ -379,7 +378,7 @@ binds {
     Mod+D hotkey-overlay-title="Open the Noctalia Launcher" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Mod+E hotkey-overlay-title="Run an Application: vscode" { spawn "code"; }
-    Mod+B hotkey-overlay-title="Run an Application: firefox" { spawn "firefox"; }
+    Mod+B hotkey-overlay-title="Run an Application: chrome" { spawn "google-chrome-stable"; }
     Super+F hotkey-overlay-title="Run an Application: nautilus" { spawn "nautilus"; }
     Mod+Shift+A hotkey-overlay-title="Run an Application: kde-discover" { spawn "kde-discover"; }
     Super+S hotkey-overlay-title="Run an Application: slack" { spawn "slack"; }
@@ -660,5 +659,8 @@ gestures {
     }
 }
 
+blur {
+    passes 1
+    offset 2.5
+}
 include "./noctalia.kdl"
-
